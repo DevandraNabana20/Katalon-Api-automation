@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
    <description></description>
-   <name>Delete-User</name>
+   <name>Get-Pet</name>
    <tag></tag>
-   <elementGuidId>d78b3be5-c715-41d7-83ca-95735c536076</elementGuidId>
+   <elementGuidId>da60726d-47c7-499d-8bde-9382ec0b25b5</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>false</useRalativeImagePath>
@@ -19,14 +19,14 @@
       <name>Accept</name>
       <type>Main</type>
       <value>application/json</value>
-      <webElementGuid>1bf8a3b7-720b-42b9-b7bb-9ab4da24b460</webElementGuid>
+      <webElementGuid>2b43c548-ebaa-4315-8866-5fb6420e4fd0</webElementGuid>
    </httpHeaderProperties>
    <katalonVersion>11.1.3</katalonVersion>
    <maxResponseSize>-1</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <path></path>
-   <restRequestMethod>DELETE</restRequestMethod>
-   <restUrl>https://petstore.swagger.io/v2/user/${param_url_username}</restUrl>
+   <restRequestMethod>GET</restRequestMethod>
+   <restUrl>https://petstore.swagger.io/v2/pet/${pet_id}</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -36,20 +36,20 @@
    <socketTimeout>-1</socketTimeout>
    <useServiceInfoFromWsdl>true</useServiceInfoFromWsdl>
    <validationSteps>
-      <id>8e584c03-07b2-4301-93b3-0031841cbed7</id>
+      <id>4cdc6129-ea7d-44b9-ae07-9b04c3e42472</id>
       <name>New Validation</name>
       <type>JSON_SCHEMA</type>
       <dataType>FILE</dataType>
       <target>RESPONSE</target>
-      <data>Schema/SchemeExercise.json</data>
+      <data>Schema/SchemaAssignmentforPet.json</data>
       <activate>true</activate>
    </validationSteps>
    <variables>
-      <defaultValue>GlobalVariable.current_username</defaultValue>
+      <defaultValue>GlobalVariable.pet_id</defaultValue>
       <description></description>
-      <id>aea0708d-0d35-4865-8e70-63d26a129cc9</id>
+      <id>d1d67416-0455-4705-bf6c-efd30823a301</id>
       <masked>false</masked>
-      <name>param_url_username</name>
+      <name>pet_id</name>
    </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
@@ -65,11 +65,13 @@ RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
 
 ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
 
-
 WS.verifyResponseStatusCode(response, 200)
-
 assertThat(response.getStatusCode()).isEqualTo(200)
-WS.verifyElementPropertyValue(response, 'code', 200)
-WS.verifyElementPropertyValue(response, 'type', &quot;unknown&quot;)</verificationScript>
+
+WS.verifyElementPropertyValue(response, 'id', 23)
+WS.verifyElementPropertyValue(response, 'category.name', &quot;Kucing&quot;)
+WS.verifyElementPropertyValue(response, 'name', &quot;Ochi&quot;)
+WS.verifyElementPropertyValue(response, 'status', &quot;available&quot;)
+</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>

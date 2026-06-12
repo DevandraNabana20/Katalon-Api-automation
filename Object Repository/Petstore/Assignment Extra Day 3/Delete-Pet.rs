@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
    <description></description>
-   <name>Delete-User</name>
+   <name>Delete-Pet</name>
    <tag></tag>
-   <elementGuidId>d78b3be5-c715-41d7-83ca-95735c536076</elementGuidId>
+   <elementGuidId>ffd59ed5-6746-4cb9-98f9-0ef5fd60e87b</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>false</useRalativeImagePath>
@@ -19,14 +19,14 @@
       <name>Accept</name>
       <type>Main</type>
       <value>application/json</value>
-      <webElementGuid>1bf8a3b7-720b-42b9-b7bb-9ab4da24b460</webElementGuid>
+      <webElementGuid>468730fd-181c-4566-8e07-8f3076b9224f</webElementGuid>
    </httpHeaderProperties>
    <katalonVersion>11.1.3</katalonVersion>
    <maxResponseSize>-1</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <path></path>
    <restRequestMethod>DELETE</restRequestMethod>
-   <restUrl>https://petstore.swagger.io/v2/user/${param_url_username}</restUrl>
+   <restUrl>https://petstore.swagger.io/v2/pet/${pet_id}</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -35,21 +35,12 @@
    <soapServiceFunction></soapServiceFunction>
    <socketTimeout>-1</socketTimeout>
    <useServiceInfoFromWsdl>true</useServiceInfoFromWsdl>
-   <validationSteps>
-      <id>8e584c03-07b2-4301-93b3-0031841cbed7</id>
-      <name>New Validation</name>
-      <type>JSON_SCHEMA</type>
-      <dataType>FILE</dataType>
-      <target>RESPONSE</target>
-      <data>Schema/SchemeExercise.json</data>
-      <activate>true</activate>
-   </validationSteps>
    <variables>
-      <defaultValue>GlobalVariable.current_username</defaultValue>
+      <defaultValue>GlobalVariable.pet_id</defaultValue>
       <description></description>
-      <id>aea0708d-0d35-4865-8e70-63d26a129cc9</id>
+      <id>1fd9be0d-dcec-4901-8e22-131e2eb30a3e</id>
       <masked>false</masked>
-      <name>param_url_username</name>
+      <name>pet_id</name>
    </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
@@ -64,10 +55,6 @@ import internal.GlobalVariable as GlobalVariable
 RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
 
 ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
-
-
-WS.verifyResponseStatusCode(response, 200)
-
 assertThat(response.getStatusCode()).isEqualTo(200)
 WS.verifyElementPropertyValue(response, 'code', 200)
 WS.verifyElementPropertyValue(response, 'type', &quot;unknown&quot;)</verificationScript>
